@@ -1,11 +1,11 @@
 export const DASHBOARD_CARDS = [
   {
     id: 'course',
-    title: 'Pembelajaran Mandiri',
-    description: 'Akses materi pembelajaran sesuai kecepatanmu',
+    title: 'Ayo Belajar !',
+    description: 'Akses materi pembelajaran sesuai minatmu, Dilengkapi dengan fitur belajar menggunakan suara',
     gradient: 'from-blue-500 to-purple-600',
     icon: '📚',
-    stats: '12 courses available'
+    stats: '12 jenis mata pelajaran'
   },
   {
     id: 'quiz',
@@ -13,7 +13,7 @@ export const DASHBOARD_CARDS = [
     description: 'Uji pemahamanmu dengan berbagai soal',
     gradient: 'from-green-500 to-teal-600',
     icon: '🎯',
-    stats: '25 quizzes completed'
+    stats: '25 tugas selesai'
   },
   {
     id: 'leaderboard',

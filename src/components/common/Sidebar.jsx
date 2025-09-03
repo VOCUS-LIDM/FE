@@ -6,7 +6,7 @@ const Sidebar = ({ currentPage, onNavigate }) => {
 
   const sidebarItems = [
     { id: 'dashboard', icon: User, label: 'Dashboard' },
-    { id: 'course', icon: BookOpen, label: 'Course' },
+    { id: 'course', icon: BookOpen, label: 'Kurikulum Belajar' },
     { id: 'quiz', icon: HelpCircle, label: 'Quiz' },
     { id: 'leaderboard', icon: Trophy, label: 'Leaderboard' },
     { id: 'settings', icon: Settings, label: 'Settings' },

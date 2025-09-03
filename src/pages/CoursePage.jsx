@@ -19,7 +19,7 @@ const CoursePage = () => {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Course</h1>
+        <h1 className="text-3xl font-bold text-white mb-2">Kurikulum Belajar</h1>
         <p className="text-blue-100 mb-6">Pilih mata pelajaran yang ingin dipelajari</p>
         
         {/* Filter Buttons */}

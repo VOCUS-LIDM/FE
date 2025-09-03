@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import { Eye, EyeOff, User, Lock } from 'lucide-react'
+import { useState } from 'react';
+import { Eye, EyeOff, User, Lock } from 'lucide-react';
+import { useAuth } from '../context/AuthContext'; // Import hook useAuth
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
-  })
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const { login } = useAuth(); // Dapatkan fungsi login dari AuthContext
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    
-    // Simulate login process
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
+    // Kirim email dan password ke fungsi login dari AuthContext
+    const success = login(formData.email);
+
     setTimeout(() => {
-      setIsLoading(false)
-      onLogin()
-    }, 1500)
-  }
+      setIsLoading(false);
+      if (!success) {
+        setError('Email atau password salah.');
+      }
+    }, 1500);
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-8 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
       <div className="w-full max-w-md">
         {/* Logo & Welcome */}
         <div className="text-center mb-8">
@@ -87,6 +96,11 @@ const LoginPage = ({ onLogin }) => {
               </div>
             </div>
 
+            {/* Error Message */}
+            {error && (
+              <p className="text-red-400 text-sm text-center">{error}</p>
+            )}
+
             {/* Remember Me & Forgot Password */}
             <div className="flex items-center justify-between">
               <label className="flex items-center">
@@ -118,7 +132,7 @@ const LoginPage = ({ onLogin }) => {
           {/* Demo Info */}
           <div className="mt-6 p-4 bg-blue-500/20 rounded-lg">
             <p className="text-blue-200 text-sm text-center">
-              <strong>Demo Mode:</strong> Click login button to continue (no credentials required)
+              <strong>Demo Mode:</strong> Gunakan **raihan@example.com** (untuk user) atau **admin@example.com** (untuk admin).
             </p>
           </div>
 
@@ -134,7 +148,7 @@ const LoginPage = ({ onLogin }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
