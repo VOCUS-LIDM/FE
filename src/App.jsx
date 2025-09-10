@@ -38,13 +38,13 @@ const AppContent = () => {
     // Tampilkan halaman admin jika role adalah 'administrator'
     if (user.role === 'administrator') {
       switch (currentPage) {
-        case 'dashboard': return <AdminDashboard />;
+        case 'dashboard': return <AdminDashboard onNavigate={setCurrentPage} />;
         case 'users': return <UserManagement />;
         case 'quizzes': return <QuizManagement />;
         case 'reports': return <Reports />;
         case 'activities': return <ActivityMonitoring />;
         case 'courses': return <CourseManagement />;
-        default: return <AdminDashboard />;
+        default: return <AdminDashboard onNavigate={setCurrentPage} />;
       }
     }
     return null; // Tampilkan null jika tidak ada halaman yang cocok

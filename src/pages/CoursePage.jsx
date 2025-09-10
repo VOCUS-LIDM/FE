@@ -1,14 +1,22 @@
 import { useState } from 'react'
 import CourseCard from '../components/course/CourseCard'
+import VoiceLearningPage from '../components/voice/VoiceLearningPage'
 import { COURSES } from '../data/courses'
+import { ArrowLeft } from 'lucide-react'
 
 const CoursePage = () => {
   const [filter, setFilter] = useState('all')
+  const [selectedCourse, setSelectedCourse] = useState(null)
+  const [viewMode, setViewMode] = useState('list') // 'list' or 'voice-learning'
 
   const handleCourseClick = (course) => {
-    // TODO: Navigate to course detail page
-    console.log('Selected course:', course)
-    // You can add navigation logic here later
+    setSelectedCourse(course)
+    setViewMode('voice-learning')
+  }
+
+  const handleBackToCourses = () => {
+    setSelectedCourse(null)
+    setViewMode('list')
   }
 
   const filteredCourses = COURSES.filter(course => {
@@ -16,11 +24,30 @@ const CoursePage = () => {
     return course.category === filter
   })
 
+  // Jika dalam mode voice learning, tampilkan komponen voice learning
+  if (viewMode === 'voice-learning' && selectedCourse) {
+    return (
+      <div className="relative">
+        {/* Back Button */}
+        <button
+          onClick={handleBackToCourses}
+          className="absolute top-4 left-4 z-10 flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg text-white transition-colors"
+        >
+          <ArrowLeft size={20} />
+          <span>Back to Courses</span>
+        </button>
+        
+        <VoiceLearningPage course={selectedCourse} />
+      </div>
+    )
+  }
+
+  // Mode tampilan list courses
   return (
     <div className="p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Kurikulum Belajar</h1>
-        <p className="text-blue-100 mb-6">Pilih mata pelajaran yang ingin dipelajari</p>
+        <p className="text-blue-100 mb-6">Pilih mata pelajaran yang ingin kamu pelajari bersama VOCUS</p>
         
         {/* Filter Buttons */}
         <div className="flex space-x-4 mb-6">

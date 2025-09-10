@@ -42,10 +42,14 @@ const LoginPage = () => {
         {/* Logo & Welcome */}
         <div className="text-center mb-8">
           <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
-            <span className="text-white font-bold text-3xl">C</span>
+            <img 
+                src="/images/Logo Vocus Putih.png"  
+                alt="Logo" 
+                className="w-12 h-12 object-contain"
+              />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back!</h1>
-          <p className="text-blue-200">Login to continue your learning journey</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Selamat Datang Kembali</h1>
+          <p className="text-blue-200">Masuk untuk melanjutkan perjalanan pembelajaran Anda</p>
         </div>
 
         {/* Login Form */}
@@ -128,13 +132,6 @@ const LoginPage = () => {
               )}
             </button>
           </form>
-
-          {/* Demo Info */}
-          <div className="mt-6 p-4 bg-blue-500/20 rounded-lg">
-            <p className="text-blue-200 text-sm text-center">
-              <strong>Demo Mode:</strong> Gunakan **raihan@example.com** (untuk user) atau **admin@example.com** (untuk admin).
-            </p>
-          </div>
 
           {/* Sign Up Link */}
           <div className="mt-6 text-center">

@@ -28,34 +28,34 @@ const StatCard = ({ title, value, change, icon: Icon, color = 'indigo' }) => {
   );
 };
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ onNavigate }) => {
   return (
     <div className="p-8">
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard
-          title="Total Users"
+          title="Total Pengguna"
           value={ADMIN_STATS.totalUsers}
           change="+12%"
           icon={Users}
           color="indigo"
         />
         <StatCard
-          title="Total Courses"
+          title="Total Kursus"
           value={ADMIN_STATS.totalCourses}
           change="+5%"
           icon={BookOpen}
           color="green"
         />
         <StatCard
-          title="Active Users"
+          title="Pengguna Aktif"
           value={ADMIN_STATS.activeUsers}
           change="+8%"
           icon={Activity}
           color="blue"
         />
         <StatCard
-          title="Avg. Score"
+          title="Rata-rata Skor"
           value={`${ADMIN_STATS.avgScore}%`}
           change="+3%"
           icon={TrendingUp}
@@ -66,7 +66,7 @@ const AdminDashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Recent Activities */}
         <div className="bg-slate-800/50 rounded-2xl p-6">
-          <h3 className="text-xl font-bold text-white mb-6">Recent Activities</h3>
+          <h3 className="text-xl font-bold text-white mb-6">Aktivitas Terbaru</h3>
           <div className="space-y-4">
             {RECENT_ACTIVITIES.map((activity) => (
               <div key={activity.id} className="flex items-center space-x-4 p-4 bg-slate-700/30 rounded-lg">
@@ -87,23 +87,35 @@ const AdminDashboard = () => {
 
         {/* Quick Actions */}
         <div className="bg-slate-800/50 rounded-2xl p-6">
-          <h3 className="text-xl font-bold text-white mb-6">Quick Actions</h3>
+          <h3 className="text-xl font-bold text-white mb-6">Aksi Cepat</h3>
           <div className="grid grid-cols-2 gap-4">
-            <button className="p-4 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white transition-colors">
+            <button
+              onClick={() => onNavigate('courses')}
+              className="p-4 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white transition-colors"
+            >
               <Plus size={24} className="mx-auto mb-2" />
-              <div className="text-sm font-medium">Add Course</div>
+              <div className="text-sm font-medium">Tambah Kursus</div>
             </button>
-            <button className="p-4 bg-green-600 hover:bg-green-700 rounded-lg text-white transition-colors">
+            <button
+              onClick={() => onNavigate('quizzes')}
+              className="p-4 bg-green-600 hover:bg-green-700 rounded-lg text-white transition-colors"
+            >
               <HelpCircle size={24} className="mx-auto mb-2" />
-              <div className="text-sm font-medium">Create Quiz</div>
+              <div className="text-sm font-medium">Buat Kuis</div>
             </button>
-            <button className="p-4 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition-colors">
+            <button
+              onClick={() => onNavigate('reports')}
+              className="p-4 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition-colors"
+            >
               <Download size={24} className="mx-auto mb-2" />
-              <div className="text-sm font-medium">Export Data</div>
+              <div className="text-sm font-medium">Ekspor Data</div>
             </button>
-            <button className="p-4 bg-orange-600 hover:bg-orange-700 rounded-lg text-white transition-colors">
+            <button
+              onClick={() => onNavigate('reports')}
+              className="p-4 bg-orange-600 hover:bg-orange-700 rounded-lg text-white transition-colors"
+            >
               <BarChart3 size={24} className="mx-auto mb-2" />
-              <div className="text-sm font-medium">View Reports</div>
+              <div className="text-sm font-medium">Lihat Laporan</div>
             </button>
           </div>
         </div>

@@ -28,7 +28,7 @@ const mockUsers = {
     lastActive: 'now'
   }
 };
-
+  
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // Mulai dengan user null
 

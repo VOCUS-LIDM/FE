@@ -23,10 +23,10 @@ const CourseCard = ({ course, onClick }) => {
         </div>
         
         {/* Course Info */}
-        <div className="absolute top-8 right-8 text-white/80 text-right">
-          <div className="text-xs font-medium">{course.lessons} Lessons</div>
+       {/* <div className="absolute top-8 right-8 text-white/80 text-right">
+          <div className="text-xs font-medium">{course.lessons} Perkurangan</div>
           <div className="text-xs">{course.duration}</div>
-        </div>
+        </div> */}
         
         {/* Course Number */}
         <div className="absolute bottom-8 right-8">
