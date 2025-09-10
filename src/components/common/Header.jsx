@@ -1,8 +1,18 @@
 import { LogOut, Bell, Search } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 
-const Header = ({ currentPage, onLogout }) => {
-  const { user } = useAuth()
+const Header = ({ currentPage }) => {
+  const { user, logout, isAuthenticated } = useAuth()
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      // Redirect ke halaman login setelah logout
+      window.location.href = '/login';
+    } catch (error) {
+      console.error('Error saat logout:', error);
+    }
+  };
 
   const getPageTitle = () => {
     switch (currentPage) {
@@ -13,6 +23,11 @@ const Header = ({ currentPage, onLogout }) => {
       case 'settings': return 'Settings'
       default: return 'Dashboard'
     }
+  }
+
+  // Jika belum login, jangan tampilkan header
+  if (!isAuthenticated()) {
+    return null;
   }
 
   return (
@@ -52,7 +67,7 @@ const Header = ({ currentPage, onLogout }) => {
         
         {/* Logout */}
         <button 
-          onClick={onLogout}
+          onClick={handleLogout}
           className="text-white/60 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
           title="Logout"
         >

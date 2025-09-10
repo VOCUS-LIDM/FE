@@ -11,22 +11,32 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { login } = useAuth(); // Dapatkan fungsi login dari AuthContext
+  const { login, isLoading: authLoading } = useAuth(); // Dapatkan fungsi login dari AuthContext
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
-    // Kirim email dan password ke fungsi login dari AuthContext
-    const success = login(formData.email);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      if (!success) {
-        setError('Email atau password salah.');
+    try {
+      // Panggil fungsi login dari AuthContext (yang sudah menggunakan API)
+      const result = await login(formData.email, formData.password);
+      
+      if (result.success) {
+        // Login berhasil, user akan di-redirect otomatis
+        console.log("Login berhasil!", result.user);
+      } else {
+        // Jika login gagal, tampilkan error
+        setError(result.error);
       }
-    }, 1500);
+    } catch (error) {
+      // Tangkap error yang tidak terduga
+      console.error("Error saat login:", error);
+      setError("Terjadi kesalahan, coba lagi nanti");
+    } finally {
+      // Selalu set loading ke false
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e) => {
