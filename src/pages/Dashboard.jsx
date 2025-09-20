@@ -21,7 +21,7 @@ const Dashboard = ({ onNavigate }) => {
         </h1>
         <p className="text-blue-100 mb-6">Pilih aktivitas belajar yang ingin kamu lakukan hari ini</p>
         
-        {/* Stats Overview */}4
+        {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="glass-effect rounded-xl p-4">
             <div className="text-2xl font-bold text-white">{user?.score}</div>

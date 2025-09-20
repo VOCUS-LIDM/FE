@@ -21,7 +21,7 @@ const mockUsers = {
     completedCourses: 3
   },
   'admin@example.com': {
-    name: 'Admin',
+    name: 'Pengajar A',
     email: 'admin@example.com',
     avatar: '👨‍💼',
     role: 'administrator',

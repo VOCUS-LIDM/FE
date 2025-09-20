@@ -127,20 +127,6 @@ const CourseManagement = () => {
                   <option value="Paket C">Paket C</option>
                 </select>
               </div>
-
-              <div>
-                <label className="block text-white/80 text-sm font-medium mb-2">Sub Bab</label>
-                <input
-                  type="text"
-                  name="subtopics"
-                  value={newCourse.subtopics}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Contoh: Pecahan, Aljabar, Geometri"
-                  required
-                />
-              </div>
-
               <div>
                 <label className="block text-white/80 text-sm font-medium mb-2">File Modul (Dokumen/PDF)</label>
                 <div className="flex items-center space-x-3 bg-slate-700 border border-slate-600 rounded-lg">
