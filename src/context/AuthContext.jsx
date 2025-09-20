@@ -11,28 +11,6 @@ export const useAuth = () => {
   return context;
 };
 
-<<<<<<< HEAD
-// Data pengguna mock, ini berfungsi sebagai database sederhana
-const mockUsers = {
-  'raihan@example.com': {
-    name: 'Raihan',
-    email: 'raihan@example.com',
-    avatar: '👨‍🎓',
-    role: 'student',
-    score: 850,
-    completedCourses: 3
-  },
-  'admin@example.com': {
-    name: 'Admin',
-    email: 'admin@example.com',
-    avatar: '👨‍💼',
-    role: 'administrator',
-    lastActive: 'now'
-  }
-};
-  
-=======
->>>>>>> 2c5ecaf (Add authentication features and integrate API services)
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
@@ -59,7 +37,6 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('user');
       } finally {
         setIsLoading(false);
-        console.log('Selesai mengecek token, isLoading set to false');
       }
     };
 
@@ -111,7 +88,7 @@ export const AuthProvider = ({ children }) => {
           console.error('Error saat menyimpan ke localStorage:', storageError);
         }
         
-        console.log('Login berhasil dan token tersimpan:', userData);
+        console.log('Login berhasil dan token tersimpan');
         return { success: true, user: userData };
       } else {
         console.log('Login gagal:', result.error);

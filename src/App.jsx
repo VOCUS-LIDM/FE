@@ -24,8 +24,9 @@ const AppContent = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
 
   const renderPage = () => {
+    console.log('role:', user.role)
     // Tampilkan halaman user jika role adalah 'student'
-    if (user.role === 'student') {
+    if (user.role === 'Peserta') {
       switch (currentPage) {
         case 'dashboard': return <UserDashboard onNavigate={setCurrentPage} />;
         case 'course': return <UserCoursePage />;
@@ -36,7 +37,7 @@ const AppContent = () => {
     }
     
     // Tampilkan halaman admin jika role adalah 'administrator'
-    if (user.role === 'administrator') {
+    if (user.role === 'Pengajar') {
       switch (currentPage) {
         case 'dashboard': return <AdminDashboard onNavigate={setCurrentPage} />;
         case 'users': return <UserManagement />;
@@ -56,8 +57,8 @@ const AppContent = () => {
   }
 
   // Pilih layout dan background sesuai peran
-  const LayoutComponent = user.role === 'administrator' ? AdminLayout : UserLayout;
-  const backgroundClass = user.role === 'administrator'
+  const LayoutComponent = user.role === 'Pengajar' ? AdminLayout : UserLayout;
+  const backgroundClass = user.role === 'Pengajar'
     ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
     : 'bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900';
 
